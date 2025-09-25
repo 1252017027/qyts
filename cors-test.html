@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS测试页面</title>
+</head>
+<body>
+    <h1>CORS跨域测试</h1>
+    <div id="result"></div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function testCORS() {
+            console.log('开始测试CORS...');
+            
+            $.ajax({
+                type: "POST",
+                url: "https://qyts.wosb.cn/api/complain.php",
+                data: {
+                    type: "check",
+                    sn: "DEMO_CHANNEL_001",
+                    time: new Date().getTime()
+                },
+                success: function(data) {
+                    console.log('CORS测试成功:', data);
+                    document.getElementById('result').innerHTML = '<p style="color: green;">✅ CORS测试成功: ' + JSON.stringify(data) + '</p>';
+                },
+                error: function(xhr, status, error) {
+                    console.error('CORS测试失败:', error);
+                    console.error('状态码:', xhr.status);
+                    console.error('响应文本:', xhr.responseText);
+                    document.getElementById('result').innerHTML = '<p style="color: red;">❌ CORS测试失败: ' + error + '<br>状态码: ' + xhr.status + '</p>';
+                }
+            });
+        }
+        
+        // 页面加载后自动测试
+        window.onload = function() {
+            testCORS();
+        };
+    </script>
+</body>
+</html>
