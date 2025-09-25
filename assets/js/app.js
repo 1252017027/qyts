@@ -1,39 +1,39 @@
 // API配置
-const API_CONFIG = {
+常量 API配置 = {
     // 后端API基础地址，需要根据实际部署情况修改
-    BASE_URL: 'https://qywx.menghuaa.cn',
-}
+    基础网址：'https://qywx.menghuaa.cn'，
+
     // API端点
-    endpoints: {
-        complaint: '/api/complain.php',
-        complaintDetail: '/api/get_complaint_detail.php',
-        complaintTypes: '/api/get_complaint_types.php',
-        config: '/api/get_config.php',
-        upload: '/api/upload.php',
-        uploadImg: '/api/upload_img.php'
-    }
+    端点：{
+        投诉：'/api/complain.php'，
+        投诉详情：'/api/get_complaint_detail.php'，
+        complaintTypes：'/api/get_complaint_types.php'，
+        配置：'/api/get_config.php'，
+        上传：'/api/upload.php'，
+        上传图片：'/api/upload_img.php'
+};
 };
 
 // 获取URL查询参数
-function getUrlQuery(name) {
+函数 getUrlQuery(name) {
     let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-    let r = window.location.search.substr(1).match(reg);
-    if (r != null) {
-        return decodeURIComponent(r[2]);
+    let r = 窗口.位置.搜索.子字符串(1).匹配(正则表达式);
+    如果 (r 不等于 空) {
+        返回 解码URIComponent(r[2]);
     }
-    return null;
+    返回 无;
 }
 
 // 验证手机号
-function isValidMobileNumber(phoneNumber) {
-    const regex = /^1[3-9]\d{9}$/;
-    return regex.test(phoneNumber);
+函数 isValidMobileNumber(phoneNumber) {
+    常量 正则表达式 = /^1[3-9]\d{9}$/;
+    返回 正则表达式.测试(电话号码);
 }
 
 // 跳转到投诉须知
-function go_know(){
+函数 了解(){
     // 跳转到投诉须知页面
-    const currentUrl = new URL(window.location);
+    常量 当前网址 = 新 网址(窗口.位置);
     const urlParams = currentUrl.searchParams;
     
     // 保持原有参数，添加notice参数
@@ -317,4 +317,5 @@ var app = new Vue({
 
     }
 });
+
 
