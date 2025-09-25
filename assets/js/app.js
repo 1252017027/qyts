@@ -2,7 +2,7 @@
 const API_CONFIG = {
     // 后端API基础地址，需要根据实际部署情况修改
     BASE_URL: 'https://qywx.menghuaa.cn',
-    
+}
     // API端点
     endpoints: {
         complaint: '/api/complain.php',
@@ -317,3 +317,4 @@ var app = new Vue({
 
     }
 });
+
